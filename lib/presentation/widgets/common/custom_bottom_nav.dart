@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:bidkan/core/constants/colors.dart';
 
 class CustomBottomNav extends StatelessWidget {
   final int currentIndex;
@@ -15,15 +16,15 @@ class CustomBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF7C3AED); // สีม่วงตามแบรนด์
-    final inactiveColor = Colors.grey.shade500;
+    const primaryColor = AppColors.primary;
+    const inactiveColor = AppColors.textSecondary;
 
     return Container(
       margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
       height: 70, // ความสูงของแถบสีขาว
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(35), // ทำมุมโค้งมน
+        borderRadius: BorderRadius.circular(18), // ทำมุมโค้งมน
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.08),
@@ -66,7 +67,7 @@ class CustomBottomNav extends StatelessWidget {
                   ],
                 ),
                 child: const Icon(
-                  LucideIcons.scan, // ไอคอนสแกน
+                  LucideIcons.scanLine, // ไอคอนสแกน
                   color: Colors.white,
                   size: 32,
                 ),

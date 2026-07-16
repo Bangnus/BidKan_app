@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bidkan/presentation/screens/Home/home_page.dart';
+import 'package:bidkan/core/constants/colors.dart';
 
 class Myapp extends StatelessWidget {
   const Myapp({super.key});
@@ -22,7 +23,7 @@ class Myapp extends StatelessWidget {
       // 2. ใช้ builder สร้าง เลเยอร์สี F2F2F7 ไว้ล่างสุด และวาง SVG ไว้ด้านบน
       builder: (context, child) {
         return Container(
-          color: const Color(0xFFF2F2F7), // สีพื้นหลังหลักของแอป
+          color: AppColors.bg, // สีพื้นหลังหลักของแอป
           child: Stack(
             children: [
               // รูปภาพอยู่แค่ส่วนบน ไม่เต็มหน้าจอ (แต่แสดงรูปครบถ้วน 100%)
