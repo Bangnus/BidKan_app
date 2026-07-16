@@ -49,7 +49,7 @@ class CustomBottomNav extends StatelessWidget {
           ),
           // ปุ่มแสกน QR ตรงกลาง (ลอยขึ้นมา)
           Positioned(
-            top: -25, // ดันให้ลอยขึ้นไปเหนือแถบ
+            top: -15, // ลดความสูงลงมาให้ชิดระดับเดียวกับ Text
             child: GestureDetector(
               onTap: onScanTap,
               child: Container(
@@ -58,13 +58,6 @@ class CustomBottomNav extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: primaryColor,
                   shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: primaryColor.withOpacity(0.4),
-                      blurRadius: 15,
-                      offset: const Offset(0, 8),
-                    ),
-                  ],
                 ),
                 child: const Icon(
                   LucideIcons.scanLine, // ไอคอนสแกน
