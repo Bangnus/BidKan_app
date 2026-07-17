@@ -5,7 +5,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ลบ Scaffold กับ CustomBottomNav ออกไปเลย เหลือแค่ตัวเนื้อหา 
+    // 1. เลเยอร์ล่างสุด: พื้นที่สำหรับใส่แผนที่ในอนาคต
     return const Center(
       child: Text(
         'หน้าแผนที่หลัก (Home)',
