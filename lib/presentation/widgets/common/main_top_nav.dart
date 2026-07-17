@@ -28,7 +28,7 @@ class MainTopNav extends StatelessWidget {
                 height: 32,
                 fit: BoxFit.contain,
               ),
-              const SizedBox(width: 4),
+              // const SizedBox(width: 2),
               const Text(
                 'BidKan',
                 style: TextStyle(

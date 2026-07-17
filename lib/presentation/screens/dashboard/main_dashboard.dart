@@ -5,6 +5,7 @@ import 'package:bidkan/presentation/screens/Home/home_page.dart';
 import 'package:bidkan/presentation/screens/wallet/wallet_page.dart';
 import 'package:bidkan/presentation/screens/history/history_page.dart';
 import 'package:bidkan/presentation/screens/profile/profile_page.dart';
+import 'package:bidkan/presentation/screens/scan/qr_scan_page.dart';
 
 class MainDashboard extends StatefulWidget {
   const MainDashboard({super.key});
@@ -62,7 +63,10 @@ class _MainDashboardState extends State<MainDashboard> {
           });
         },
         onScanTap: () {
-          print('เปิดกล้อง Scan QR!');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const QRScanPage()),
+          );
         },
       ),
     );
