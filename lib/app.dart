@@ -1,7 +1,7 @@
 // ไฟล์: lib/app.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:bidkan/presentation/screens/Home/home_page.dart';
+import 'package:bidkan/presentation/screens/dashboard/main_dashboard.dart';
 import 'package:bidkan/core/constants/colors.dart';
 
 class Myapp extends StatelessWidget {
@@ -46,7 +46,7 @@ class Myapp extends StatelessWidget {
       // 3. ตั้งค่า Router เปลี่ยนหน้า
       initialRoute: '/home',
       routes: {
-        '/home': (context) => const HomePage(),
+        '/home': (context) => const MainDashboard(),
       },
     );
   }
