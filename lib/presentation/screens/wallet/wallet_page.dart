@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bidkan/presentation/screens/wallet/widgets/wallet_card.dart';
+import 'package:bidkan/presentation/screens/wallet/widgets/wallet_actions.dart';
 
 class WalletPage extends StatelessWidget {
   /// ยอดเงินที่รอรับจาก API (Default ตัวอย่าง 100.00)
@@ -36,7 +37,25 @@ class WalletPage extends StatelessWidget {
 
               const SizedBox(height: 24),
 
-              // 3. เว้นพื้นที่ด้านล่างเพื่อไม่ให้โดน CustomBottomNav ทับ
+              // 3. เมนูหลัก 4 ปุ่ม (เติมเงิน, โอนเงิน, คูปอง, รางวัล & แรงค์)
+              WalletActions(
+                onTopUp: () {
+                  // TODO: นำทางไปหน้าเติมเงิน
+                },
+                onTransfer: () {
+                  // TODO: นำทางไปหน้าโอนเงิน
+                },
+                onCoupon: () {
+                  // TODO: นำทางไปหน้าคูปอง
+                },
+                onRewardRank: () {
+                  // TODO: นำทางไปหน้ารางวัล & แรงค์
+                },
+              ),
+
+              const SizedBox(height: 24),
+
+              // 4. เว้นพื้นที่ด้านล่างเพื่อไม่ให้โดน CustomBottomNav ทับ
               const SizedBox(height: 140),
             ],
           ),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:bidkan/presentation/widgets/common/custom_bottom_nav.dart';
-import 'package:bidkan/presentation/widgets/common/main_top_nav.dart';
+import 'package:bidkan/utils/responsive.dart';
 import 'package:bidkan/presentation/screens/Home/home_page.dart';
 import 'package:bidkan/presentation/screens/wallet/wallet_page.dart';
 import 'package:bidkan/presentation/screens/history/history_page.dart';
 import 'package:bidkan/presentation/screens/profile/profile_page.dart';
-import 'package:bidkan/presentation/screens/scan/qr_scan_page.dart';
+import 'package:bidkan/presentation/screens/dashboard/widgets/mobile_dashboard_view.dart';
+import 'package:bidkan/presentation/screens/dashboard/widgets/web_header.dart';
+import 'package:bidkan/presentation/screens/dashboard/widgets/web_sidebar.dart';
 
 class MainDashboard extends StatefulWidget {
   const MainDashboard({super.key});
@@ -16,8 +17,8 @@ class MainDashboard extends StatefulWidget {
 
 class _MainDashboardState extends State<MainDashboard> {
   int _currentIndex = 0;
+  bool _isSidebarOpen = true;
 
-  // เอาหน้าที่ต้องการสลับมาใส่ใน List นี้
   final List<Widget> _pages = [
     const HomePage(),
     const WalletPage(),
@@ -25,50 +26,51 @@ class _MainDashboardState extends State<MainDashboard> {
     const ProfilePage(),
   ];
 
+  void _onTabSelected(int index) {
+    setState(() => _currentIndex = index);
+  }
+
+  void _toggleSidebar() {
+    setState(() => _isSidebarOpen = !_isSidebarOpen);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true, 
-      // 1. ใช้ Stack เพื่อให้ Top Nav ลอยอยู่เหนือทุกหน้า
-      body: Stack(
-        children: [
-          // เลเยอร์เนื้อหาหลัก (สลับหน้าไปมา)
-          IndexedStack(
-            index: _currentIndex,
-            children: _pages,
-          ),
-          
-          // เลเยอร์แถบเมนูด้านบน (แสดงเฉพาะหน้าแรก / Home)
-          if (_currentIndex == 0)
-            const Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: SafeArea(
-                bottom: false,
-                child: MainTopNav(
-                  walletBalance: 100.0,
-                  hasNotification: true,
-                ),
+    if (Responsive.isWebOrDesktop(context)) {
+      return Scaffold(
+        backgroundColor: const Color(0xFFF8F9FA),
+        body: Row(
+          children: [
+            WebSidebar(
+              currentIndex: _currentIndex,
+              isExpanded: _isSidebarOpen,
+              onTabSelected: _onTabSelected,
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  WebHeader(
+                    currentIndex: _currentIndex,
+                    onToggleSidebar: _toggleSidebar,
+                  ),
+                  Expanded(
+                    child: IndexedStack(
+                      index: _currentIndex,
+                      children: _pages,
+                    ),
+                  ),
+                ],
               ),
             ),
-        ],
-      ),
-      // 2. เรียกใช้ CustomBottomNav แค่ที่นี่ที่เดียว!
-      bottomNavigationBar: CustomBottomNav(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        onScanTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const QRScanPage()),
-          );
-        },
-      ),
+          ],
+        ),
+      );
+    }
+
+    return MobileDashboardView(
+      currentIndex: _currentIndex,
+      pages: _pages,
+      onTabSelected: _onTabSelected,
     );
   }
 }
