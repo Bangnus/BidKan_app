@@ -45,14 +45,12 @@ class _MainDashboardState extends State<MainDashboard> {
               currentIndex: _currentIndex,
               isExpanded: _isSidebarOpen,
               onTabSelected: _onTabSelected,
+              onToggleSidebar: _toggleSidebar,
             ),
             Expanded(
               child: Column(
                 children: [
-                  WebHeader(
-                    currentIndex: _currentIndex,
-                    onToggleSidebar: _toggleSidebar,
-                  ),
+                  WebHeader(currentIndex: _currentIndex),
                   Expanded(
                     child: IndexedStack(
                       index: _currentIndex,

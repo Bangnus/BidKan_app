@@ -4,20 +4,20 @@ import 'package:lucide_icons/lucide_icons.dart';
 
 class WebHeader extends StatelessWidget {
   final int currentIndex;
-  final VoidCallback onToggleSidebar;
 
-  const WebHeader({
-    super.key,
-    required this.currentIndex,
-    required this.onToggleSidebar,
-  });
+  const WebHeader({super.key, required this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
-    final titles = ['หน้าหลัก (Campus Map)', 'กระเป๋าเงิน (Wallet)', 'ประวัติการใช้งาน (History)', 'โปรไฟล์ (Profile)'];
+    final titles = [
+      'หน้าหลัก (Campus Map)',
+      'กระเป๋าเงิน (Wallet)',
+      'ประวัติการใช้งาน (History)',
+      'โปรไฟล์ (Profile)'
+    ];
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -27,24 +27,9 @@ class WebHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              // Hamburger Button
-              IconButton(
-                onPressed: onToggleSidebar,
-                icon: const Icon(LucideIcons.menu, color: AppColors.textPrimary, size: 22),
-                tooltip: 'เปิด/ปิด เมนูด้านข้าง',
-                style: IconButton.styleFrom(
-                  hoverColor: AppColors.primary.withOpacity(0.08),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                titles[currentIndex],
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
-              ),
-            ],
+          Text(
+            titles[currentIndex],
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
           ),
           Row(
             children: [
