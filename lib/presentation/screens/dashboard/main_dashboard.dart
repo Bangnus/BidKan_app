@@ -38,8 +38,8 @@ class _MainDashboardState extends State<MainDashboard> {
             children: _pages,
           ),
           
-          // เลเยอร์แถบเมนูด้านบน (แสดงค้างไว้ทุกหน้า ยกเว้นหน้าโปรไฟล์)
-          if (_currentIndex != 3)
+          // เลเยอร์แถบเมนูด้านบน (แสดงเฉพาะหน้าแรก / Home)
+          if (_currentIndex == 0)
             const Positioned(
               top: 0,
               left: 0,

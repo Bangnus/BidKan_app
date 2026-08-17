@@ -1,17 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:bidkan/presentation/screens/wallet/widgets/wallet_card.dart';
 
 class WalletPage extends StatelessWidget {
-  const WalletPage({super.key});
+  /// ยอดเงินที่รอรับจาก API (Default ตัวอย่าง 100.00)
+  final double balance;
+
+  /// เลขบัญชีหรือเบอร์โทรศัพท์ที่รอรับจาก API
+  final String accountNumber;
+
+  const WalletPage({
+    super.key,
+    this.balance = 100.00,
+    this.accountNumber = '065-458-5254',
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'หน้ากระเป๋าเงิน (Wallet)',
-        style: TextStyle(
-          fontSize: 24, 
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
+    return SafeArea(
+      bottom: false,
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // 1. เว้นระยะด้านบนจาก SafeArea
+              const SizedBox(height: 24),
+
+              // 2. การ์ดกระเป๋าเงิน (Wallet Card)
+              WalletCard(
+                accountNumber: accountNumber,
+                balance: balance,
+              ),
+
+              const SizedBox(height: 24),
+
+              // 3. เว้นพื้นที่ด้านล่างเพื่อไม่ให้โดน CustomBottomNav ทับ
+              const SizedBox(height: 140),
+            ],
+          ),
         ),
       ),
     );
