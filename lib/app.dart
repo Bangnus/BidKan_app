@@ -1,6 +1,5 @@
 // ไฟล์: lib/app.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bidkan/presentation/screens/dashboard/main_dashboard.dart';
 import 'package:bidkan/core/constants/colors.dart';
 
@@ -12,12 +11,12 @@ class Myapp extends StatelessWidget {
     return MaterialApp(
       title: 'Bidkan',
       debugShowCheckedModeBanner: false,
-      
+
       // 1. ตั้งค่า Theme
       theme: ThemeData(
         primaryColor: Colors.blueAccent,
         // สำคัญ: ตั้งให้ Scaffold โปร่งใส เพื่อให้เห็นเลเยอร์ด้านล่างที่เราจัดไว้
-        scaffoldBackgroundColor: Colors.transparent, 
+        scaffoldBackgroundColor: Colors.transparent,
       ),
 
       // 2. ใช้ builder สร้าง เลเยอร์สี F2F2F7 ไว้ล่างสุด และวาง SVG ไว้ด้านบน
@@ -33,7 +32,8 @@ class Myapp extends StatelessWidget {
                 right: 0,
                 child: Image.asset(
                   'lib/assets/images/bg.png',
-                  fit: BoxFit.fitWidth, // ขยายความกว้างเต็มจอ และความสูงปรับตามสัดส่วนจริงของรูป
+                  fit: BoxFit
+                      .fitWidth, // ขยายความกว้างเต็มจอ และความสูงปรับตามสัดส่วนจริงของรูป
                 ),
               ),
               // ตัวแอป (หน้าจอต่างๆ) จะมาวางทับด้านบน
@@ -45,9 +45,7 @@ class Myapp extends StatelessWidget {
 
       // 3. ตั้งค่า Router เปลี่ยนหน้า
       initialRoute: '/home',
-      routes: {
-        '/home': (context) => const MainDashboard(),
-      },
+      routes: {'/home': (context) => const MainDashboard()},
     );
   }
 }
